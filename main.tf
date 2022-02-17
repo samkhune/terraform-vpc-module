@@ -45,7 +45,6 @@ resource "aws_subnet" "private_app" {
   vpc_id = aws_vpc.main.id
   cidr_block = "${var.subnet_cidrs_private_app[count.index]}"
   #availability_zone = "${var.availability_zones[count.index]}"
-  
   tags = {
     Name = "prod-private-app-subnet-${[count.index]}"
   }
