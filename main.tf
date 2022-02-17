@@ -34,7 +34,7 @@ resource "aws_subnet" "public" {
   count = "${length(var.subnet_cidrs_public)}"
   vpc_id = aws_vpc.main.id
   cidr_block = "${var.subnet_cidrs_public[count.index]}"
-  #availability_zone = "${var.availability_zones[count.index]}"
+  availability_zone = "${var.availability_zones[count.index]}"
   tags = {
     Name = "prod-public-subnet-[count.index]"
   }
@@ -44,7 +44,7 @@ resource "aws_subnet" "private_app" {
   count = "${length(var.subnet_cidrs_private_app)}"
   vpc_id = aws_vpc.main.id
   cidr_block = "${var.subnet_cidrs_private_app[count.index]}"
-  #availability_zone = "${var.availability_zones[count.index]}"
+  availability_zone = "${var.availability_zones[count.index]}"
   tags = {
     Name = "prod-private-app-subnet-${[count.index]}"
   }
@@ -56,7 +56,7 @@ resource "aws_subnet" "private_db" {
   count = "${length(var.subnet_cidrs_private_db)}"
   vpc_id = aws_vpc.main.id
   cidr_block = "${var.subnet_cidrs_private_db[count.index]}"
-  #availability_zone = "${var.availability_zones[count.index]}"
+  availability_zone = "${var.availability_zones[count.index]}"
   tags = {
     Name = "prod-private-db-subnet-${[count.index]}"
   }
