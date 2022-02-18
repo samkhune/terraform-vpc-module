@@ -128,9 +128,9 @@ resource "aws_route_table_association" "publicRTassociation" {
   subnet_id = "${element(aws_subnet.public.*.id, count.index)}"
   route_table_id = aws_route_table.publicRT.id
 
-  tags = {
-      Name = "prod-private-db-route-table"
-  }
+  #tags = {
+     # Name = "prod-private-db-route-table"
+  #}
 }
 
 #route table association for private app subnet
