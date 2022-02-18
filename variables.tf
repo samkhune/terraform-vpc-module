@@ -6,8 +6,9 @@ variable "aws_region" {
 variable "cidr_block" {
 
 }
-#variable "availability_zones" {
-#}
+variable "availability_zones" {
+  type = list(string)
+}
 
 variable "subnet_cidrs_public" {
   type = list(string)
