@@ -101,7 +101,7 @@ resource "aws_route_table" "privateRT-app" {
     route {
         cidr_block = "0.0.0.0/0"
         
-        nat_gateway_id = aws_nat_gateway.NATgw[count.index]
+        nat_gateway_id = aws_nat_gateway.NATgw.id
     }
     tags = {
       Name = "prod-private-app-route-table"
