@@ -46,7 +46,7 @@ resource "aws_subnet" "private_app" {
   cidr_block = "${var.subnet_cidrs_private_app[count.index]}"
   availability_zone = "${var.availability_zones[count.index]}"
   tags = {
-    Name = "prod-private-app-subnet-${[count.index]}"
+    Name = "prod-private-app-subnet-[count.index]"
   }
 }
 
@@ -58,7 +58,7 @@ resource "aws_subnet" "private_db" {
   cidr_block = "${var.subnet_cidrs_private_db[count.index]}"
   availability_zone = "${var.availability_zones[count.index]}"
   tags = {
-    Name = "prod-private-db-subnet-${[count.index]}"
+    Name = "prod-private-db-subnet-[count.index]"
   }
 }
 #route table for public subnet
@@ -128,9 +128,9 @@ resource "aws_route_table_association" "publicRTassociation" {
   subnet_id = "${element(aws_subnet.public.*.id, count.index)}"
   route_table_id = aws_route_table.publicRT.id
 
-  #tags = {
-     # Name = "prod-private-db-route-table"
- # }
+  tags = {
+      Name = "prod-private-db-route-table"
+  }
 }
 
 #route table association for private app subnet
